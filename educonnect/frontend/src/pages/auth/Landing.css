@@ -1,0 +1,189 @@
+.landing-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.landing-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  animation: float 10s ease-in-out infinite;
+}
+.orb1 { width: 500px; height: 500px; background: rgba(0,201,167,0.15); top: -150px; left: -150px; }
+.orb2 { width: 400px; height: 400px; background: rgba(245,166,35,0.1); bottom: -100px; right: -100px; animation-delay: 5s; }
+.orb3 { width: 250px; height: 250px; background: rgba(162,155,254,0.08); top: 50%; left: 50%; transform: translate(-50%,-50%); animation-delay: 2.5s; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0,0); }
+  50% { transform: translate(25px,-25px); }
+}
+
+.grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.25;
+}
+
+.landing-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 680px;
+  width: 100%;
+  gap: 32px;
+}
+
+.landing-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-logo {
+  filter: drop-shadow(0 0 20px rgba(0,201,167,0.4));
+}
+
+.brand-name {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-tagline {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.landing-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.landing-desc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.role-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+.role-card {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  text-align: left;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.role-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 20px;
+}
+
+.admin-card::before { background: radial-gradient(circle at 30% 30%, rgba(245,166,35,0.1), transparent 60%); }
+.parent-card::before { background: radial-gradient(circle at 30% 30%, rgba(0,201,167,0.1), transparent 60%); }
+
+.role-card:hover { transform: translateY(-4px); }
+.admin-card:hover { border-color: var(--gold); box-shadow: 0 12px 40px rgba(245,166,35,0.15); }
+.parent-card:hover { border-color: var(--accent); box-shadow: 0 12px 40px rgba(0,201,167,0.15); }
+.role-card:hover::before { opacity: 1; }
+
+.role-icon {
+  width: 64px; height: 64px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+.admin-icon { background: var(--gold-dim); color: var(--gold); }
+.parent-icon { background: var(--accent-dim); color: var(--accent); }
+
+.role-info h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+.role-info p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+
+.role-arrow {
+  margin-top: auto;
+  font-size: 1.2rem;
+  color: var(--text-dim);
+  transition: transform 0.2s;
+}
+.role-card:hover .role-arrow { transform: translateX(4px); color: var(--text-secondary); }
+
+.role-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: var(--gold-dim);
+  color: var(--gold);
+  border: 1px solid rgba(245,166,35,0.3);
+}
+.parent-badge {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-color: rgba(0,201,167,0.3);
+}
+
+.landing-features {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feature-chip {
+  background: var(--navy-mid);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .role-cards { grid-template-columns: 1fr; }
+  .landing-title { font-size: 1.9rem; }
+}
